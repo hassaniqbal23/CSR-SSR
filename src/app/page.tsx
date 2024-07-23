@@ -8,6 +8,7 @@ export interface User {
   firstName: string;
   university: string;
   age: number;
+  image: string;
 }
 
 function Userpage() {
@@ -26,8 +27,8 @@ function Userpage() {
         {users.map((user) => (
           <div key={user.id}>
             <Link
-              href={`${user.id}`}
-              className="border py-4 px-2 w-60 flex mt-4  flex-col"
+              href={`/${user.id}`}
+              className="border py-4 px-2 w-60 flex mt-4  flex-col "
             >
               name - {user.firstName}
               <h2>age - {user.age}</h2>

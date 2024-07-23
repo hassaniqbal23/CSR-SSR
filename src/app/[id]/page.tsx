@@ -3,13 +3,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { User } from "../page";
+import Image from "next/image";
 
-function UserIdpage() {
+function UserInfoPage() {
   const router = useRouter();
   const { id } = useParams();
 
-  const [userId, setUserId] = useState<User[]>([]);
-  console.log(userId);
+  const [users, setUserId] = useState<User | null>(null);
+  console.log(users);
 
   useEffect(() => {
     async function getUserId() {
@@ -19,12 +20,26 @@ function UserIdpage() {
     }
     getUserId();
   }, []);
+
+  if (!users) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-      <div>User ID Page</div>
-      <button onClick={() => router.push("/")}>back to home</button>
+      <div className="w-full h-screen flex justify-center items-center flex-col">
+        <li>{users.firstName}</li>
+        <li>
+          <Image
+            src={users?.image}
+            height={400}
+            width={400}
+            alt={"image"}
+          ></Image>
+        </li>
+        <button onClick={() => router.push("/")}>back to home</button>
+      </div>
     </>
   );
 }
 
-export default UserIdpage;
+export default UserInfoPage;
