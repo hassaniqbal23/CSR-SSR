@@ -10,7 +10,6 @@ function UserInfoPage() {
   const { id } = useParams();
 
   const [users, setUserId] = useState<User | null>(null);
-  console.log(users);
 
   useEffect(() => {
     async function getUserId() {
