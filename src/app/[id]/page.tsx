@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import { User } from "../page";
+import UserNotFound from "../(UserNotFound)/page";
 
 function UserInfoPage() {
   const router = useRouter();
@@ -40,7 +41,11 @@ function UserInfoPage() {
   }
 
   if (notFound) {
-    return <div>user not found</div>;
+    return (
+      <div>
+        <UserNotFound />
+      </div>
+    );
   }
 
   return (
